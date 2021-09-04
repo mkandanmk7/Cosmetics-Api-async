@@ -202,7 +202,7 @@ function changeProduct(name) {
   product = name;
   pageNo = 0;
   filteredData = [];
-  postProduct(originalData); //call postProduct() with orignal data arg;
+  postProduct(data); //call postProduct() with orignal data arg;
 }
 
 //changeBrand();
@@ -226,7 +226,7 @@ function searchProduct(enter) {
   }
 }
 
-let originalData;
+let data;
 
 getProduct();
 
@@ -244,6 +244,126 @@ async function getProduct() {
   let response = await fetch(
     "https://makeup-api.herokuapp.com/api/v1/products.json"
   );
-  let data = await response.json();
+  data = await response.json();
+
+  // console.log(data);
+  postProduct(data);
+}
+
+//get search detail data here.
+function searchFilter(newData) {
+  const regex = new RegExp(newData, "gi");
+  data.forEach((i) => {
+    if (regex.test(i.name)) {
+      filteredData.push(i);
+    }
+  });
+  if (filteredData.length == 0) {
+    productCards.innerHTML = `<h2>No products found</h2>`;
+  } else {
+    listData(filteredData);
+  }
+}
+function brandFilter(newData) {
+  data.forEach((i) => {
+    if (i.brand === newData) {
+      filteredData.push(i);
+    }
+  });
+  listData(filteredData);
+}
+
+function postProduct(newData) {
+  console.log(newData);
+  console.log(newData[0].product_type, newData.length);
+  productCards.innerHTML = ""; //empty before and add after.
+
+  newData.forEach((i) => {
+    if (i.product_type == product) {
+      filteredData.push(i);
+    }
+  });
+  listData(filteredData); //send product details to listdata()
+}
+
+// listData() ;
+
+function listData(data) {
+  productCards.innerHTML = "";
+  console.log(data.length);
   console.log(data);
+
+  for (let i = pageNo; i < pageNo + 10; i++) {
+    if (i < data.length) {
+      console.log(data.length);
+      let productName = data[i].name;
+      let productBrand = data[i].brand;
+      let productPrice = data[i].price;
+      let productDescription = data[i].description;
+      let productShades = data[i].product_colors;
+      let productImage = data[i].image_link;
+      let productLink = data[i].product_link;
+      console.log(productName, productPrice);
+
+      productCards.innerHTML = `
+      <div class="card" >
+        <div>
+          <img  class="cardImage" src=${productImage} onerror="this.src='https://source.unsplash.com/VJ4pn_PSBLo/' ">
+        </div>
+        <div class="cardBody">
+          <div class="productName"><h3>${productName}</h3></div>
+          <div class="productBrand"><b>Brand :</b> ${productBrand}</div>
+          <div class="productPrice"><b>$${productPrice}</b></div>
+          <div class="productDescription"><p>${productDescription}</p></div>
+          <div class="productShades">
+            <div><p>Shades Available:</p></div>
+            <div class="shadesContainer${i} shadesContainer"></div>
+          </div>
+          <div class="productLink"><a href="#">${productLink}</a></div>
+        </div>
+      </div>
+      `;
+
+      // shades using hex value:
+      // shades div created;
+      let a = "shadesContainer" + i;
+      let shadesContainer = document.getElementsByClassName(a)[0];
+      for (let j = 0; j < productShades.length; j++) {
+        let newShade = document.createElement("div");
+        {
+          newShade.className = "shades";
+          newShade.style.backgroundColor = productShades[j].hex_value;
+          // console.log(productShades[j].hex_value);
+
+          shadesContainer.append(newShade);
+        }
+      }
+    }
+
+    //add every page buttons :next and previous:
+
+    productCards.innerHTML += `
+    <div class="buttons">
+      
+    <div><button class="btn btn-dark" onclick="previousPage()">Previous</button></div>
+    <div><button class="btn btn-dark onclick="nextPage()">Next</button></div>   
+    </div>
+    `;
+  }
+  // previous page(): onclick event:
+
+  function previousPage() {
+    if (pageNo >= 10) {
+      productCards.innerHTML = `<h2 class="loading">Loading...</h2>`;
+      pageNo -= 10;
+      listData(filteredData); // get list data using filteredData value:
+    }
+  }
+  function nextPage() {
+    if (pageNo < filteredData.length - 11) {
+      productCards.innerHTML = `<h2 class="loading">Loading...</h2>`;
+      pageNo += 10;
+      listData(filteredData);
+    }
+  }
 }
