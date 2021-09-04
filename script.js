@@ -305,7 +305,7 @@ function listData(data) {
       let productLink = data[i].product_link;
       console.log(productName, productPrice);
 
-      productCards.innerHTML = `
+      productCards.innerHTML += `
       <div class="card" >
         <div>
           <img  class="cardImage" src=${productImage} onerror="this.src='https://source.unsplash.com/VJ4pn_PSBLo/' ">
@@ -343,7 +343,7 @@ function listData(data) {
     //add every page buttons :next and previous:
 
     productCards.innerHTML += `
-    <div class="buttons">
+    <div class="Buttons">
       
     <div><button class="btn btn-dark" onclick="previousPage()">Previous</button></div>
     <div><button class="btn btn-dark onclick="nextPage()">Next</button></div>   
