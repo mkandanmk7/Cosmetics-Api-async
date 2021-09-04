@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.headerImg {
+  width: 100%;
+  height: 5rem;
+}
+.pageHeader,
+.pageFooter {
+  background: #000;
+  color: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.pageFooter {
+  height: 3rem;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
