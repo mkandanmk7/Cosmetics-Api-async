@@ -89,11 +89,12 @@ body {
   border-bottom: 1px solid grey;
 } */
 .productList {
-  width: 40%;
+  width: 30%;
   margin: 10px 0;
   height: max-content;
   background: rgba(189, 173, 179, 0.3);
   padding: 10px;
+  text-align: center;
   position: sticky;
   top: 0;
   border-radius: 10px;
@@ -108,7 +109,7 @@ body {
 }
 .mainBox {
   display: flex;
-  gap: 90px;
+  gap: 30px;
 
   margin: 2rem;
 }
@@ -116,7 +117,7 @@ body {
   display: flex;
   flex-direction: column;
 
-  width: fit-content;
+  /* width: fit-content; */
   justify-content: space-between;
   /* overflow: auto; */
 }
