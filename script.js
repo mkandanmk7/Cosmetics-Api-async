@@ -151,8 +151,7 @@ let slideShowImage = document.querySelector("#slideShowImage");
 //  image turn:
 
 function turnImage() {
-  if (i > 4);
-  i = 0;
+  if (i > 4) i = 0;
   slideShowImage.src = sliderImg[i];
   i++;
 }
@@ -274,8 +273,8 @@ function brandFilter(newData) {
 }
 
 function postProduct(newData) {
-  console.log(newData);
-  console.log(newData[0].product_type, newData.length);
+  // console.log(newData);
+  // console.log(newData[0].product_type, newData.length);
   productCards.innerHTML = ""; //empty before and add after.
 
   newData.forEach((i) => {
@@ -290,12 +289,12 @@ function postProduct(newData) {
 
 function listData(data) {
   productCards.innerHTML = "";
-  console.log(data.length);
-  console.log(data);
+  // console.log(data.length);
+  // console.log(data);
 
   for (let i = pageNo; i < pageNo + 10; i++) {
     if (i < data.length) {
-      console.log(data.length);
+      // console.log(data.length);
       let productName = data[i].name;
       let productBrand = data[i].brand;
       let productPrice = data[i].price;
@@ -303,7 +302,7 @@ function listData(data) {
       let productShades = data[i].product_colors;
       let productImage = data[i].image_link;
       let productLink = data[i].product_link;
-      console.log(productName, productPrice);
+      // console.log(productName, productPrice);
 
       productCards.innerHTML += `
       <div class="card" >

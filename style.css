@@ -49,6 +49,7 @@ body {
 }
 .slideShowImage {
   width: 100%;
+  height: 200px;
   object-fit: fill;
   transition: all 0.3s;
   animation: slide 2s infinite;
@@ -61,11 +62,12 @@ body {
   }
 }
 .slideShow > .previous {
-  font-size: 3rem;
+  font-size: 1.5rem;
   color: #000;
   opacity: 0.5;
   position: absolute;
-  top: 50%;
+  top: 40%;
+  filter: drop-shadow(1px 5px 10px);
   left: 0;
 }
 .slideShowImage:hover {
@@ -74,11 +76,12 @@ body {
   opacity: 1;
 }
 .slideShow > .next {
-  font-size: 3rem;
+  font-size: 1.5rem;
   color: #000;
   position: absolute;
-  top: 50%;
+  top: 40%;
   right: 0;
+  filter: drop-shadow(1px 5px 10px);
   opacity: 0.5;
   transition: slide 2s;
 }
