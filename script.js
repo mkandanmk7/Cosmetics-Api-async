@@ -29,12 +29,12 @@ document.body.append(headerDiv);
 
 // header after image:
 
-let imageHeaderDiv1 = document.createElement("div");
-imageHeaderDiv1.innerHTML = `
-<img src="https://source.unsplash.com/VJ4pn_PSBLo/1600x100" alt="make up kit" class="headerImg">
+// let imageHeaderDiv1 = document.createElement("div");
+// imageHeaderDiv1.innerHTML = `
+// <img src="https://source.unsplash.com/VJ4pn_PSBLo/1600x100" alt="make up kit" class="headerImg">
 
-`;
-document.body.append(imageHeaderDiv1);
+// `;
+// document.body.append(imageHeaderDiv1);
 
 // image slide show screen:
 
@@ -330,40 +330,41 @@ function listData(data) {
       let shadesContainer = document.getElementsByClassName(a)[0];
       for (let j = 0; j < productShades.length; j++) {
         let newShade = document.createElement("div");
-        {
-          newShade.className = "shades";
-          newShade.style.backgroundColor = productShades[j].hex_value;
-          // console.log(productShades[j].hex_value);
 
-          shadesContainer.append(newShade);
-        }
+        newShade.className = "shades";
+        newShade.style.backgroundColor = productShades[j].hex_value;
+        // console.log(productShades[j].hex_value);
+
+        shadesContainer.append(newShade);
       }
     }
+  }
 
-    //add every page buttons :next and previous:
+  //add every page buttons :next and previous:
 
-    productCards.innerHTML += `
+  productCards.innerHTML += `
     <div class="Buttons">
       
-    <div><button class="btn btn-dark" onclick="previousPage()">Previous</button></div>
-    <div><button class="btn btn-dark onclick="nextPage()">Next</button></div>   
+    <div><button class="btn btn-dark" onclick="previousPage()">Previous</button></button></div>
+    <div><button class="btn btn-dark" onclick="nextPage()">Next</button></div>   
     </div>
     `;
-  }
-  // previous page(): onclick event:
+}
+// previous page(): onclick event:
 
-  function previousPage() {
-    if (pageNo >= 10) {
-      productCards.innerHTML = `<h2 class="loading">Loading...</h2>`;
-      pageNo -= 10;
-      listData(filteredData); // get list data using filteredData value:
-    }
+function previousPage() {
+  console.log("hy");
+  if (pageNo >= 10) {
+    productCards.innerHTML = `<h2 class="loading">Loading...</h2>`;
+    pageNo -= 10;
+    listData(filteredData); // get list data using filteredData value:
   }
-  function nextPage() {
-    if (pageNo < filteredData.length - 11) {
-      productCards.innerHTML = `<h2 class="loading">Loading...</h2>`;
-      pageNo += 10;
-      listData(filteredData);
-    }
+}
+function nextPage() {
+  console.log("h  sgs gdy");
+  if (pageNo < filteredData.length - 11) {
+    productCards.innerHTML = `<h2 class="loading">Loading...</h2>`;
+    pageNo += 10;
+    listData(filteredData);
   }
 }
