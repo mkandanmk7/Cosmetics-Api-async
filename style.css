@@ -24,8 +24,8 @@ body {
 }
 .pageHeader {
   width: 100%;
-  position: sticky;
-  top: 0;
+  /* position: sticky;
+  top: 0; */
   overflow: hidden;
   /* font-size: large; */
   background: rgb(2, 2, 2);
@@ -111,7 +111,7 @@ body {
   padding: 10px;
   text-align: center;
   position: sticky;
-  top: 60px;
+  top: 80px;
 
   border-radius: 10px;
 }
@@ -125,7 +125,7 @@ body {
 }
 .mainBox {
   display: flex;
-  gap: 30px;
+  gap: 50px;
 
   margin: 2rem;
 }
@@ -217,6 +217,8 @@ body {
 }
 .brandBox {
   display: flex;
+  position: sticky;
+  top: 0;
   flex-direction: row;
   align-items: center;
   background: #000;
